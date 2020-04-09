@@ -2,19 +2,28 @@
   <div class="login-title">
     <van-divider :style="{ color: '#999', borderColor: '#1989fa', padding: '0 16px' }">{{title}}</van-divider>
     <van-form>
-      <div>
+      <!--手机短信验证的手机号-->
+      <div v-show="manner">
         <input v-model="phone" placeholder="请输入手机号" />
       </div>
+      <!-- 账号登录的账号 -->
+      <div v-show="!manner">
+        <input v-model="logName" placeholder="请输入已注册的手机/邮箱/用户名" />
+      </div>
+      <!-- 手机短信验证的验证码 -->
       <div class="verification" v-show="manner">
         <input v-model="verificationCode" placeholder="请输入验证码" />
         <van-button round plain type="primary" @click="onVerificationCode">{{show?time:'验证'}}</van-button>
       </div>
+      <!-- 账号登录的密码 -->
       <div v-show="!manner">
-        <input v-model="logPawss" placeholder="请输入密码" />
+        <input type="password" v-model="logPawss" placeholder="请输入密码" />
       </div>
+      <!-- 注册账号的设置密码 -->
       <div v-show="!regClause">
-        <input v-model="regPawss" placeholder="6-16位登录密码" />
+        <input type="password" v-model="regPawss" placeholder="6-16位登录密码" />
       </div>
+      <!-- 切换登录的方式 --->
       <div class="clause" v-show="regClause">
         <p @click="onSwitchingMode">{{manner?'使用聚美帐号登录':'使用手机短信验证码登录'}}</p>
         <p>30天内自动登录</p>
@@ -26,6 +35,7 @@
   </div>
 </template>
 <script>
+import {Login} from '../../../api/serve/login'
 import Vue from "vue";
 import { Dialog } from "vant";
 Vue.use(Dialog);
@@ -49,7 +59,8 @@ export default {
       phone: "", //手机号码
       verificationCode: "", //验证码
       regPawss: "", //注册密码
-      logPawss:'',//登录密码
+      logPawss: "", //账号登录密码
+      logName:'',//账号登录
       time: 90, //验证时间
       show: false, //是否正在验证 （false：否 ，true：是）
       manner: true //登录方式（true：手机验证，false：密码）
@@ -58,8 +69,12 @@ export default {
   methods: {
     //提交数据
     onSubmit() {
+      this.manner ? this.toShortMessage() : this.toAccountNumber();
+    },
+    //手机短信登录的验证 && 注册账号的验证
+    toShortMessage() {
       let reg = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/;
-      let reg2 = /^\w,{6,16}$/;
+      let reg2 = /^\w{6,16}$/;
       if (this.phone.trim()) {
         if (reg.test(this.phone)) {
           //验证码校验
@@ -72,6 +87,14 @@ export default {
               } else if (!reg2.test(this.regPawss)) {
                 this.toPopUpWindows("密码格式不正确,请重新输入");
               }
+            }else{
+              let obj = {
+                name:this.phone,
+                pass:this.verificationCode
+              }
+              Login(obj).then(data=>{
+                window.console.log(data)
+              })
             }
           } else {
             this.toPopUpWindows("请输入验证码");
@@ -81,6 +104,21 @@ export default {
         }
       } else {
         this.toPopUpWindows("请输入 11 位手机号码 ");
+      }
+    },
+    //账号登录验证
+    toAccountNumber() {
+       let reg2 = /^\w{6,16}$/;
+      if(this.logName.trim()){
+        if(this.logPawss.trim()){
+          if(!reg2.test(this.logPawss)){
+            this.toPopUpWindows('密码格式不正确')
+          }
+        }else{
+          this.toPopUpWindows('请输入密码')
+        }
+      }else{
+        this.toPopUpWindows('请输入用户名')
       }
     },
     toPopUpWindows(val) {
