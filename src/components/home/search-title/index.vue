@@ -7,13 +7,26 @@
       <van-tab title="轻奢" to="/manage/home/Luxurious"></van-tab>
       <van-tab title="名品特卖" to="/manage/home/FamousBrandSale"></van-tab>
     </van-tabs>
-    <router-view />
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+      <p>刷新次数: {{ count }}</p>
+      <router-view />
+    </van-pull-refresh>
   </div>
 </template>
 <script>
+import { Toast } from "vant";
 export default {
   data() {
-    return {};
+    return { count: 0, isLoading: false };
+  },
+  methods: {
+    onRefresh() {
+      setTimeout(() => {
+        Toast("刷新成功");
+        this.isLoading = false;
+        this.count++;
+      }, 1000);
+    }
   }
 };
 </script>
