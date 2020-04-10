@@ -9,10 +9,15 @@
         <van-tabbar-item icon="manager" to="/manage/myMessage">我的</van-tabbar-item>
       </van-tabbar>
     </div>
+    <Overlay />
   </div>
 </template>
 <script>
+import Overlay from "../components/home/overlay/index";
 export default {
+  components: {
+    Overlay
+  },
   data() {
     return {
       active: 0
