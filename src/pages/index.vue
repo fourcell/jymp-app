@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pages-index">
     <router-view />
     <div>
       <van-tabbar route v-model="active" active-color="#fe4070" inactive-color="#999999">
@@ -25,3 +25,8 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.pages-index {
+  height: 100%;
+}
+</style>

@@ -26,9 +26,12 @@ export default {
 </script>
 <style lang="scss">
 .overlay-card {
+  .van-card:nth-child(1){
+    margin-top: 10px;
+  }
   .van-card {
     position: relative;
-    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 8px 16px 8px 0;
     height: 130px;
     background-color: #fff;

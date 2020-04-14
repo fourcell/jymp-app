@@ -35,7 +35,7 @@ export default {
     border-bottom: 1px solid #eee;
   }
   .van-pull-refresh {
-    padding-bottom: 60px;
+    padding-bottom: 50px;
     background-color: #f5f5f5;
   }
 }

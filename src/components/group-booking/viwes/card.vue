@@ -35,7 +35,7 @@ export default {
   width: 100%;
   height: auto;
   background-color: #f5f5f5;
-  padding-bottom: 60px;
+  padding-bottom: 50px;
   .goods {
     width: 100%;
     background-color: #fff;
