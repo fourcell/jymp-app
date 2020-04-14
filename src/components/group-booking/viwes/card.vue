@@ -1,6 +1,6 @@
 <template>
   <div class="product-con">
-    <div class="goods" v-for="i in 4" :key="i">
+    <div class="goods" v-for="i in 4" :key="i" @click="onListPage">
       <div class="goods-topsmall">
         <img
           src="http://mp6.jmstatic.com/product/005/002/5002978_std/5002978_1000_1000.jpg?v=1585302689&imageView2/2/w/440/q/90"
@@ -22,7 +22,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  methods:{
+    onListPage(){
+      window.console.log(666)
+    }
+  }
+};
 </script>
 <style lang="scss">
 .product-con {
