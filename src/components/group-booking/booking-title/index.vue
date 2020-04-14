@@ -1,8 +1,10 @@
 <template>
   <div class="tab-title">
-    <van-tabs title-active-color="#fe4070" color="#fe4070" title-inactive-color="#666">
-      <van-tab v-for="(item,index) in title" :title="item.name" :key="index"></van-tab>
-    </van-tabs>
+    <van-sticky :offset-top="0">
+      <van-tabs title-active-color="#fe4070" color="#fe4070" title-inactive-color="#666">
+        <van-tab v-for="(item,index) in title" :title="item.name" :key="index"></van-tab>
+      </van-tabs>
+    </van-sticky>
     <Card />
   </div>
 </template>
