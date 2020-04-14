@@ -1,8 +1,13 @@
 <template>
-    <div>母婴</div>
+  <div>
+    <HomeCard />
+  </div>
 </template>
 <script>
+import HomeCard from "../../components/home-card";
 export default {
-    
-}
+  components: {
+    HomeCard
+  }
+};
 </script>

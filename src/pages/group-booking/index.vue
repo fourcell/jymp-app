@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="group-booking">
     <TabTitle />
   </div>
 </template>
@@ -11,3 +11,8 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.group-booking {
+  width: 100%;
+}
+</style>

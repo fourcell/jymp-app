@@ -8,7 +8,6 @@
       <van-tab title="名品特卖" to="/manage/home/FamousBrandSale"></van-tab>
     </van-tabs>
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <p>刷新次数: {{ count }}</p>
       <router-view />
     </van-pull-refresh>
   </div>
@@ -34,6 +33,10 @@ export default {
 .tab-title {
   .van-hairline--top-bottom {
     border-bottom: 1px solid #eee;
+  }
+  .van-pull-refresh {
+    padding-bottom: 60px;
+    background-color: #f5f5f5;
   }
 }
 </style>

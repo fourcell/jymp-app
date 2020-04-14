@@ -11,8 +11,8 @@
   </div>
 </template>
 <script>
-import OverlaySearch from "../components/overlay-search";
-import OverlayList from "../components/overlay-list";
+import OverlaySearch from "../components/overlay/overlay-search";
+import OverlayList from "../components/overlay/overlay-list";
 export default {
   components: {
     OverlaySearch,
