@@ -14,7 +14,7 @@ const routes = [
         path: '/manage',
         name: 'manage',
         alias: '/',
-        redirect:'home',
+        redirect:'home/recommend',
         component: () => import('../pages/index.vue'),
         children: [
             ...Home,

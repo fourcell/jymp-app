@@ -1,15 +1,20 @@
 <template>
   <div class="tab-title">
     <van-tabs title-active-color="#fe4070" color="#fe4070" title-inactive-color="#666">
-      <van-tab v-for="(item,index) in title" :title="item.name" :key="index">内容 {{ index }}</van-tab>
+      <van-tab v-for="(item,index) in title" :title="item.name" :key="index"></van-tab>
     </van-tabs>
+    <Card />
   </div>
 </template>
 <script>
+import Card from "../viwes/card";
 export default {
+  components: {
+    Card
+  },
   data() {
     return {
-        //请求获取title，先写死
+      //请求获取title，先写死
       title: [
         {
           name: "推荐"

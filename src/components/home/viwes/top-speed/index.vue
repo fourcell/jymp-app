@@ -1,8 +1,13 @@
 <template>
-    <div>极速免税</div>
+  <div>
+    <HomeCard />
+  </div>
 </template>
 <script>
+import HomeCard from "../../components/home-card";
 export default {
-    
-}
+  components: {
+    HomeCard
+  }
+};
 </script>

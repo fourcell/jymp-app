@@ -23,4 +23,13 @@ export default {
 };
 </script>
 <style lang="scss">
+.shopping {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .van-nav-bar {
+    width: 100%;
+  }
+}
 </style>
