@@ -1,6 +1,6 @@
 <template>
   <div class="product-con">
-    <div class="goods">
+    <div class="goods" v-for="i in 4" :key="i">
       <div class="goods-topsmall">
         <img
           src="http://mp6.jmstatic.com/product/005/002/5002978_std/5002978_1000_1000.jpg?v=1585302689&imageView2/2/w/440/q/90"
@@ -28,9 +28,12 @@ export default {};
 .product-con {
   width: 100%;
   height: auto;
+  background-color: #f5f5f5;
+  padding-bottom: 60px;
   .goods {
     width: 100%;
-    padding:0 12px;
+    background-color: #fff;
+    margin-bottom: 10px;
     .goods-topsmall {
       position: relative;
       height: 155px;
@@ -56,6 +59,7 @@ export default {};
       }
     }
     .goods-middle {
+      padding: 0 12px;
       span {
         font-size: 14px;
         line-height: 18px;
@@ -63,6 +67,7 @@ export default {};
     }
     .goods-foot {
       display: flex;
+      padding: 0 32px 0 12px;
       justify-content: space-between;
       align-items: center;
       p {
