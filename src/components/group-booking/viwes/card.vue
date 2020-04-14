@@ -40,6 +40,7 @@ export default {
     width: 100%;
     background-color: #fff;
     margin-bottom: 10px;
+     padding-bottom: 10px;
     .goods-topsmall {
       position: relative;
       height: 155px;
@@ -65,7 +66,7 @@ export default {
       }
     }
     .goods-middle {
-      padding: 0 12px;
+      padding: 0 12px 10px 12px;
       span {
         font-size: 14px;
         line-height: 18px;

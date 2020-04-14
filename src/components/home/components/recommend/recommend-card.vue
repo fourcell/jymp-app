@@ -64,7 +64,7 @@ export default {
     .van-card__footer {
       position: absolute;
       right: 16px;
-      bottom: 0;
+      bottom: 10px;
       color: #999;
       font-size: 11px;
     }
