@@ -17,7 +17,7 @@ export default {
       this.$router.go(-1);
     },
     toHome() {
-      this.$router.push({ path: "/manage/home" });
+      this.$router.push({ path: "/manage/home/recommend" });
     }
   }
 };
