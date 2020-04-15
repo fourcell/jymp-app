@@ -8,13 +8,14 @@ import MyMessage from './my-message/index'
 import ShoppingTrolley from './shopping-trolley/index'
 import Register from './register/index'
 import Login from './login/index'
+import detailPages from './detail-pages/index'
 
 const routes = [
     {
         path: '/manage',
         name: 'manage',
         alias: '/',
-        redirect:'home/recommend',
+        redirect: 'home/recommend',
         component: () => import('../pages/index.vue'),
         children: [
             ...Home,
@@ -24,7 +25,8 @@ const routes = [
         ]
     },
     ...Register,
-    ...Login
+    ...Login,
+    ...detailPages
 ]
 
 const router = new VueRouter({
