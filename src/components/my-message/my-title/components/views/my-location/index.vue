@@ -1,24 +1,18 @@
 <template>
     <div >
       <Title/>
-        <van-empty
-        class="custom-image"
-        image="https://img.yzcdn.cn/vant/custom-empty-image.png"
-        description="您当前还没有订单喔，快去选购商品下单吧"
-        />
+      <AddressList/>
     </div>
 </template>
 <script>
-import Title from '../../var.vue'
-import Bus from '../../../../../../../assets/Bus.js'
+import Title from '.././var.vue'
+import AddressList from './addressList/index'
 export default {
-   components: {
-    Title
+  components: {
+    Title,
+    AddressList,
   },
-  created() {
-    Bus.$emit('titleName',this.$route.name)
-  },
-}
+};
 </script>
 <style scoped>
   .custom-image .van-empty__image {

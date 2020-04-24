@@ -3,15 +3,15 @@
       <Title/>
         <van-empty
         class="custom-image"
-        image="https://img.yzcdn.cn/vant/empty-image-default.png"
-        description="您当前还没有收藏的商品喔！"
+        image="https://img.yzcdn.cn/vant/custom-empty-image.png"
+        description="您当前还没有订单喔，快去选购商品下单吧"
         />
     </div>
 </template>
 <script>
-import Title from '.././var'
+import Title from '../../var.vue'
 export default {
-   components: {
+  components: {
     Title
   },
 }

@@ -28,6 +28,8 @@ export default {
         this.getTitle = '我的订单'
       }else if(i[3] == 'myCollection'){
         this.getTitle = '我的收藏'
+      }else if(i[3] == 'myLocation'){
+        this.getTitle = '我的地址'
       }
     },
     toHome() {
