@@ -8,24 +8,23 @@ import MyMessage from './my-message/index'
 import ShoppingTrolley from './shopping-trolley/index'
 import Register from './register/index'
 import Login from './login/index'
+import myOrder from "./my-order/index";
+import myCollection from "./my-collection/index";
 
 const routes = [
-    {
-        path: '/manage',
-        name: 'manage',
-        alias: '/',
-        redirect:'home/recommend',
-        component: () => import('../pages/index.vue'),
-        children: [
-            ...Home,
-            ...GroupBooking,
-            ...MyMessage,
-            ...ShoppingTrolley
-        ]
-    },
-    ...Register,
-    ...Login
-]
+  {
+    path: "/manage",
+    name: "manage",
+    alias: "/",
+    redirect: "home/recommend",
+    component: () => import("../pages/index.vue"),
+    children: [...Home, ...GroupBooking, ...MyMessage, ...ShoppingTrolley],
+  },
+  ...Register,
+  ...Login,
+  ...myOrder,
+  ...myCollection,
+];
 
 const router = new VueRouter({
     mode: 'history',
