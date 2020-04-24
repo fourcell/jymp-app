@@ -11,6 +11,8 @@ import Login from './login/index'
 import myOrder from "./my-order/index";
 import myCollection from "./my-collection/index";
 import myLocation from "./my-location/index";
+import myContact from "./my-contact/index";
+import setup from "./setup/index";
 
 const routes = [
   {
@@ -26,6 +28,8 @@ const routes = [
   ...myOrder,
   ...myCollection,
   ...myLocation,
+  ...myContact,
+  ...setup,
 ];
 
 const router = new VueRouter({

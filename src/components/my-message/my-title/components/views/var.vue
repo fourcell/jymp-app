@@ -30,6 +30,10 @@ export default {
         this.getTitle = '我的收藏'
       }else if(i[3] == 'myLocation'){
         this.getTitle = '我的地址'
+      }else if(i[3] == 'myContact'){
+        this.getTitle = '联系人'
+      }else if(i[3] == 'setup'){
+        this.getTitle = '设置'
       }
     },
     toHome() {
