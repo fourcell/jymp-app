@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
 .log-title {
   height: 45px;
-  .van-nav-bar__text, {
+  .van-nav-bar__text{
     color: #333;
   }
   .van-nav-bar__title{

@@ -1,6 +1,6 @@
 <template>
   <div class="title">
-    <van-nav-bar title="我的聚美">
+    <van-nav-bar :title='getTitle'>
       <template #left>
         <van-icon name="arrow-left" size="30" color="#fff" @click="toReverse" />
       </template>
@@ -12,6 +12,11 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      getTitle:'我的聚美'
+    }
+  },
   methods: {
     toReverse() {
       this.$router.go(-1);

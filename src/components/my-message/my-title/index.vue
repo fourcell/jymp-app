@@ -2,15 +2,18 @@
   <div class="my-title">
     <Title />
     <Log />
+    <Bottom />
   </div>
 </template>
 <script>
 import Title from "./components/titlle";
 import Log from "./components/log";
+import Bottom from "./components/bottom";
 export default {
   components: {
     Title,
-    Log
+    Log,
+    Bottom
   }
 };
 </script>
