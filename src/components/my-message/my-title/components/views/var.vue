@@ -24,9 +24,15 @@ export default {
      init(){
       var str=location.href;
       let i = str.split('/')
+      // switch(i[3]){
+      //   case 'myOrder':
+      //     return this.getTitle = '我的收藏'
+      //     break;
+      // }
       if(i[3] == 'myOrder'){
         this.getTitle = '我的订单'
-      }else if(i[3] == 'myCollection'){
+      }else 
+      if(i[3] == 'myCollection'){
         this.getTitle = '我的收藏'
       }else if(i[3] == 'myLocation'){
         this.getTitle = '我的地址'
@@ -34,6 +40,14 @@ export default {
         this.getTitle = '联系人'
       }else if(i[3] == 'setup'){
         this.getTitle = '设置'
+      }else if(i[3] == 'payment'){
+        this.getTitle = '待付款'
+      }else if(i[3] == 'sendGoods'){
+        this.getTitle = '待发货'
+      }else if(i[3] == 'goodsReceived'){
+        this.getTitle = '待收货'
+      }else if(i[3] == 'taking'){
+        this.getTitle = '评价'
       }
     },
     toHome() {

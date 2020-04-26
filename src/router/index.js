@@ -13,6 +13,10 @@ import myCollection from "./my-collection/index";
 import myLocation from "./my-location/index";
 import myContact from "./my-contact/index";
 import setup from "./setup/index";
+import payment from "./payment/index";
+import sendGoods from "./send-goods/index";
+import goodsReceived from "./goods-received/index";
+import taking from "./taking/index";
 
 const routes = [
   {
@@ -30,6 +34,10 @@ const routes = [
   ...myLocation,
   ...myContact,
   ...setup,
+  ...payment,
+  ...sendGoods,
+  ...goodsReceived,
+  ...taking,
 ];
 
 const router = new VueRouter({

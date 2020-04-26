@@ -4,19 +4,15 @@
         <van-empty
         class="custom-image"
         image="https://img.yzcdn.cn/vant/custom-empty-image.png"
-        description="您当前还没有订单喔，快去选购商品下单吧"
+        description="您还没有相关订单，可以去看看有哪些想买的！"
         />
     </div>
 </template>
 <script>
-import Title from '../../var.vue'
-import Bus from '../../../../../../../assets/Bus.js'
+import Title from '.././var'
 export default {
    components: {
     Title
-  },
-  created() {
-    Bus.$emit('titleName',this.$route.name)
   },
 }
 </script>

@@ -1,22 +1,23 @@
 <template>
     <div >
       <Title/>
+       <van-notice-bar text="购物节购买，价格更优惠哦" left-icon="volume-o" />
         <van-empty
+        style="display:none"
         class="custom-image"
         image="https://img.yzcdn.cn/vant/custom-empty-image.png"
-        description="您当前还没有订单喔，快去选购商品下单吧"
+        description="您还没有相关订单，可以去看看有哪些想买的！"
         />
+        <PaymentContent/>
     </div>
 </template>
 <script>
-import Title from '../../var.vue'
-import Bus from '../../../../../../../assets/Bus.js'
+import Title from '.././var'
+import PaymentContent from './payment-content/index'
 export default {
    components: {
-    Title
-  },
-  created() {
-    Bus.$emit('titleName',this.$route.name)
+    Title,
+    PaymentContent
   },
 }
 </script>

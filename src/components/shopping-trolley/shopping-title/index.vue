@@ -14,7 +14,7 @@
 export default {
   methods: {
     toHome() {
-      this.$router.push({ path: "/manage/home" });
+      this.$router.push({ path: "/manage/home/recommend" });
     },
     toReverse() {
       this.$router.go(-1);

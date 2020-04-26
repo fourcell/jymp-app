@@ -16,10 +16,10 @@
 <script>
 export default {
   methods: {
-    onClickLeft() {
-      this.$router.push({ path: "/register" });
-    },
     onClickRight() {
+      this.$router.push({ path: "/Login" });
+    },
+    onClickLeft() {
       this.$router.go(-1);
     }
   }
