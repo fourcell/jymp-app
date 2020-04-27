@@ -35,7 +35,9 @@
   </div>
 </template>
 <script>
-import { Login } from "../../../api/serve/login";
+// import { Login } from "../../../api/serve/login";
+import { regs, login } from "../../../api/serve/login/index";
+import md5 from "../../../api/md5/index";
 import Vue from "vue";
 import { Dialog } from "vant";
 Vue.use(Dialog);
@@ -79,17 +81,19 @@ export default {
         if (reg.test(this.phone)) {
           //验证码校验
           if (this.verificationCode.trim()) {
-            console.log(this.phone, this.verificationCode);
             //注册密码校验
             if (!this.regClause) {
               if (!this.regPawss.trim()) {
                 this.toPopUpWindows("请设置密码");
               } else if (!reg2.test(this.regPawss)) {
                 this.toPopUpWindows("密码格式不正确,请重新输入");
+              } else {
+                //注册账号
+                this.toRegs();
               }
             } else {
               //手机短信登录
-              this.toPhoneLogin()
+              this.toPhoneLogin();
             }
           } else {
             this.toPopUpWindows("请输入验证码");
@@ -101,15 +105,33 @@ export default {
         this.toPopUpWindows("请输入 11 位手机号码 ");
       }
     },
+    //手机注册
+    async toRegs() {
+      let obj = {
+        name: this.phone,
+        pass: md5(this.verificationCode)
+      };
+      let res = await regs(obj).then();
+      try {
+        if (res.code == 0) {
+          this.$router.push({ path: "/Login" });
+        } else {
+          this.toPopUpWindows(res.msg);
+        }
+      } catch (error) {
+        window.console.log(error);
+      }
+    },
     //手机短信登录
     toPhoneLogin() {
       let obj = {
         name: this.phone,
         pass: this.verificationCode
       };
-      Login(obj).then(data => {
-        window.console.log(data);
-      });
+      window.console.log(obj);
+      // Login(obj).then(data => {
+      //   window.console.log(data);
+      // });
     },
     //账号登录验证
     toAccountNumber() {
@@ -118,6 +140,8 @@ export default {
         if (this.logPawss.trim()) {
           if (!reg2.test(this.logPawss)) {
             this.toPopUpWindows("密码格式不正确");
+          } else {
+            this.toLogin();
           }
         } else {
           this.toPopUpWindows("请输入密码");
@@ -132,6 +156,23 @@ export default {
       }).then(() => {
         // on close
       });
+    },
+    //登录接口
+    async toLogin() {
+      let obj = {
+        name: this.logName,
+        pass: md5(this.logPawss)
+      };
+      let res = await login(obj).then();
+      try {
+        if (res.code == 0) {
+          this.$router.push({ path: "/manage/myMessage" });
+        } else {
+          this.toPopUpWindows(res.msg);
+        }
+      } catch (error) {
+        window.console.log(error);
+      }
     },
     //获取验证码
     onVerificationCode() {
