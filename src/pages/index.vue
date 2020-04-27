@@ -4,7 +4,7 @@
     <div>
       <van-tabbar route v-model="active" active-color="#fe4070" inactive-color="#999999">
         <van-tabbar-item icon="wap-home" to="/manage/home/recommend">首页</van-tabbar-item>
-        <van-tabbar-item icon="friends" to="/manage/groupBooking">分类</van-tabbar-item>
+        <van-tabbar-item icon="apps-o" to="/manage/groupBooking">分类</van-tabbar-item>
         <van-tabbar-item icon="bag" to="/manage/shoppingTrolley">购物车</van-tabbar-item>
         <van-tabbar-item icon="manager" to="/manage/myMessage">我的</van-tabbar-item>
       </van-tabbar>
