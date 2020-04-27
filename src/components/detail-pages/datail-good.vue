@@ -34,17 +34,20 @@
         <van-cell icon="location-o" title="发货：广东广州  /  快递：免运费" value="月销336笔" />
         <van-cell icon='chat-o' :title="'宝贝评价('+this.takeData+')'"  is-link value="查看全部" @click="datailTaking_show"/>
       </div>
+      <DatailFooter/>
     </div>
-    <DatailTaking v-else/>
+    <DatailTaking v-else @goodTakeShow = 'goodTakeShow'/>
   </div>
 </template>
 <script>
 import DatailTaking from './datail-taking'
 import DatailTitle from './datail-title'
+import DatailFooter from "./datail-footer";
 export default {
   components:{
     DatailTaking,
-    DatailTitle
+    DatailTitle,
+    DatailFooter
   },
   data() {
     return {
@@ -60,6 +63,9 @@ export default {
     datailTaking_show(){
       this.takeShow = false
     },
+    goodTakeShow(val){
+      this.takeShow = val
+    }
   },
 };
 </script>
