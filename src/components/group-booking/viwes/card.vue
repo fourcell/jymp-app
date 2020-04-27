@@ -3,7 +3,7 @@
     <div class="goods" v-for="i in 4" :key="i" @click="onListPage">
       <div class="goods-topsmall">
         <img
-          src="http://mp6.jmstatic.com/product/005/002/5002978_std/5002978_1000_1000.jpg?v=1585302689&imageView2/2/w/440/q/90"
+          src="https://img.yzcdn.cn/vant/cat.jpeg"
           alt
         />
         <p>2556条评论</p>

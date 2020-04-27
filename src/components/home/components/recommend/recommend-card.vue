@@ -3,6 +3,7 @@
     <van-card
       price="2.00"
       origin-price="10.00"
+      desc="B01（升级）"
       title="【sum37]=】 呼吸苏秘37度 经典惊喜水分气垫CC霜定妆"
       thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
       v-for="i in 4"
@@ -20,6 +21,9 @@ export default {
   methods: {
     onCard(ev) {
       window.console.log(ev);
+      this.$router.push({
+        path: '/detailPages?'+"id="+ev
+      })
     }
   }
 };
@@ -33,19 +37,30 @@ export default {
     position: relative;
     margin-bottom: 10px;
     padding: 8px 16px 8px 0;
-    height: 130px;
+    height: 200px;
     background-color: #fff;
     .van-card__header {
       width: 100%;
       height: 100%;
       .van-card__thumb {
-        width: 130px;
-        height: 110px;
+        width: 160px;
+        height: 170px;
         padding-left: 10px;
       }
       .van-card__content {
         font-size: 13px;
         color: #333;
+        div{
+          height: 50px;
+          .van-card__title {
+            line-height: 16px;
+            font-size: 16px;
+          }
+          .van-card__desc{
+            line-height: 30px;
+          }
+        }
+        
         .van-card__bottom {
           .van-card__price {
             color: #fe4070;
@@ -65,6 +80,7 @@ export default {
       position: absolute;
       right: 16px;
       bottom: 10px;
+      margin-bottom: 26px;
       color: #999;
       font-size: 11px;
     }

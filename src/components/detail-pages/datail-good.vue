@@ -1,27 +1,72 @@
 <template>
-  <div class="datail-good">
-    <div class="good-img">
-      <img
-        src="//mp5.jmstatic.com/product/005/169/5169352_std/5169352_5_1000_1000.jpg?v=1586914402&imageView2/2/w/800/q/90"
-        alt
-      />
+  <div class="datail_goods_box">
+    <div class="datail-good" v-if="takeShow">
+      <DatailTitle/>
+      <van-swipe @change="onChange">
+        <van-swipe-item>
+          <div class="good-img">
+            <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt/>
+          </div>
+        </van-swipe-item>
+        <van-swipe-item>
+          <div class="good-img">
+            <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt/>
+          </div>
+        </van-swipe-item>
+        <van-swipe-item>
+          <div class="good-img">
+            <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt/>
+          </div>
+        </van-swipe-item>
+        <van-swipe-item>
+          <div class="good-img">
+            <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt/>
+          </div>
+        </van-swipe-item>
+      </van-swipe>
+      <div class="good-price">
+        <span>￥109.9</span>
+        <span>￥219</span>
+      </div>
+      <div class="good-title">【15号十点开售】完美日记天赋干皮粉底液深水弹女保湿持久干皮</div>
+      <div class="good-cell">
+        <van-cell icon="balance-o" title="促销" value="暂无促销"/>
+        <van-cell icon="location-o" title="发货：广东广州  /  快递：免运费" value="月销336笔" />
+        <van-cell icon='chat-o' :title="'宝贝评价('+this.takeData+')'"  is-link value="查看全部" @click="datailTaking_show"/>
+      </div>
     </div>
-    <div class="good-price">
-      <span>￥109.9</span>
-      <span>￥219</span>
-    </div>
-    <div class="good-title">【15号十点开售】完美日记天赋干皮粉底液深水弹女保湿持久干皮</div>
-    <div class="good-cell">
-      <van-cell title="促销" is-link value="暂无促销"/>
-      <van-cell title="运费" is-link value="内容" />
-      <van-cell title="说明" is-link value="内容" />
-    </div>
+    <DatailTaking v-else/>
   </div>
 </template>
 <script>
-export default {};
+import DatailTaking from './datail-taking'
+import DatailTitle from './datail-title'
+export default {
+  components:{
+    DatailTaking,
+    DatailTitle
+  },
+  data() {
+    return {
+      takeData:66,
+      takeShow:true
+    }
+  },
+  methods: {
+    onChange(index) {
+      console.log(index);
+      
+    },
+    datailTaking_show(){
+      this.takeShow = false
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
+.datail_goods_box{
+  margin-bottom: 100px;
+}
 .datail-good {
   .good-img {
     width: 100%;

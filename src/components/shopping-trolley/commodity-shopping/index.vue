@@ -6,7 +6,7 @@
           <van-checkbox v-model="checked" checked-color="#fe4070" icon-size="20px" />
         </div>
         <div class="card-img">
-          <van-image width="84" height="84" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+          <van-image width="140" height="140" src="https://img.yzcdn.cn/vant/cat.jpeg" />
         </div>
         <div class="card-conent">
           <p class="card-conent__titlel">【15号十点开售】完美日记天赋干皮粉底液深水弹女保湿持久干皮</p>
@@ -19,10 +19,10 @@
           </p>
           <div class="card-conent__price">
             <span class="price">￥129.9</span>
-            <span v-show="updateShow" @click="onUpdateShow">编辑</span>
+            <van-button plain type="primary" round  size="small" v-show="updateShow" @click="onUpdateShow">编辑</van-button>
             <p class="compile" v-show="!updateShow">
-              <span>删除</span>
-              <span @click="onUpdateShow">完成</span>
+              <van-button plain type="primary" round  size="small" style="margin-right: 5px">删除</van-button>
+              <van-button plain type="primary" round  size="small" @click="onUpdateShow">完成</van-button>
             </p>
           </div>
         </div>
@@ -66,6 +66,7 @@ export default {
       margin-top: 10px;
       padding-left: 8px;
       display: flex;
+      height: 150px;
       align-items: center;
       .card-img {
         padding-left: 8px;
@@ -78,13 +79,13 @@ export default {
         justify-content: flex-start;
         .card-conent__titlel {
           color: #333;
-          font-size: 14px;
+          font-size: 15px;
         }
         .card-conent__sub {
           color: #999;
           font-size: 12px;
           display: flex;
-          line-height: 20px;
+          line-height: 30px;
           justify-content: space-between;
         }
         .card-conent__stepper {
@@ -107,6 +108,7 @@ export default {
           color: #333;
           font-size: 16px;
           display: flex;
+          line-height: 30px;
           justify-content: space-between;
           .price {
             color: #fe4070;
@@ -118,9 +120,7 @@ export default {
               padding: 0 5px;
               line-height: 16px;
             }
-            span:nth-child(1) {
-              border-right: 1px solid #999;
-            }
+           
           }
         }
       }

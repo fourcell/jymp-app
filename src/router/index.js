@@ -17,6 +17,7 @@ import payment from "./payment/index";
 import sendGoods from "./send-goods/index";
 import goodsReceived from "./goods-received/index";
 import taking from "./taking/index";
+import detailPages from "./detail-pages/index";
 
 const routes = [
   {
@@ -38,6 +39,7 @@ const routes = [
   ...sendGoods,
   ...goodsReceived,
   ...taking,
+  ...detailPages,
 ];
 
 const router = new VueRouter({
