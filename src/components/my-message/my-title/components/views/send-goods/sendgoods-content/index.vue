@@ -11,8 +11,7 @@
           thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
         >
           <template #footer>
-            <van-button size="mini" round plain color="rgb(254, 64, 112)">取消订单</van-button>
-            <van-button size="mini" round plain color="rgb(254, 64, 112)">去付款</van-button>
+            <van-button size="mini" round plain color="rgb(254, 64, 112)">申请开票</van-button>
           </template>
         </van-card>
       </van-cell-group>

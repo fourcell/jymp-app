@@ -6,7 +6,7 @@
           <van-checkbox v-model="checked" checked-color="#fe4070" icon-size="20px" />
         </div>
         <div class="card-img">
-          <van-image width="140" height="140" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+          <van-image width="120" height="130" src="https://img.yzcdn.cn/vant/cat.jpeg" />
         </div>
         <div class="card-conent">
           <p class="card-conent__titlel">【15号十点开售】完美日记天赋干皮粉底液深水弹女保湿持久干皮</p>
@@ -21,7 +21,7 @@
             <span class="price">￥129.9</span>
             <van-button plain type="primary" round  size="small" v-show="updateShow" @click="onUpdateShow">编辑</van-button>
             <p class="compile" v-show="!updateShow">
-              <van-button plain type="primary" round  size="small" style="margin-right: 5px">删除</van-button>
+              <van-button plain type="primary" round  size="small" style="margin-right: 4px">删除</van-button>
               <van-button plain type="primary" round  size="small" @click="onUpdateShow">完成</van-button>
             </p>
           </div>

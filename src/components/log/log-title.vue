@@ -17,7 +17,7 @@
 export default {
   methods: {
     onClickLeft() {
-      this.$router.go(-1);
+      this.$router.push({ path: "/manage/myMessage" });
     },
     onClickRight() {
       this.$router.push({ path: "/register" });

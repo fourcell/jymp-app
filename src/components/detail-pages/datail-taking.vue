@@ -16,7 +16,7 @@
             </div>
             <template #footer>
                 <van-button icon="smile-comment-o" round size="small" color="linear-gradient(to right,#ff6034,#ee0a24)">评论</van-button>
-                <van-button icon="good-job-o" style="margin-left: 10px;" size="small" round color="linear-gradient(to right,#ff6034,#ee0a24)">有用</van-button>
+                <van-button icon="good-job-o" style="margin-left: 5px;" size="small" round color="linear-gradient(to right,#ff6034,#ee0a24)">有用</van-button>
             </template>
         </van-panel>
     </div>
@@ -46,7 +46,7 @@ export default {
     margin: 0px 15px;
 }
 .van-panel__footer{
-    margin-left: 250px;
+    margin-left: 200px;
 }
 .van-cell-group{
     margin-bottom: 20px;

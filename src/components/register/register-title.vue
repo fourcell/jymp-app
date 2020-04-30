@@ -20,7 +20,7 @@ export default {
       this.$router.push({ path: "/Login" });
     },
     onClickLeft() {
-      this.$router.go(-1);
+      this.$router.push({ path: "/manage/myMessage" });
     }
   }
 };

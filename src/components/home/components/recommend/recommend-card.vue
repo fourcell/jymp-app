@@ -17,8 +17,34 @@
   </div>
 </template>
 <script>
+import appSelect from '../../../../api/serve/home/index'
 export default {
+  data() {
+    return {
+      dataList:[],
+      selectID:1
+    }
+  },
+  created() {
+    this.getData()
+  },
   methods: {
+    //获取商品信息
+    async getData(){
+      let type = this.selectID
+      window.console.log(type);
+      let res = await appSelect(type).then();
+      try {
+        if (res.code == 0) {
+          this.dataList = payload
+        } else {
+          this.toPopUpWindows(res.msg);
+        }
+      } catch (error) {
+        window.console.log(error);
+      }
+    },
+
     onCard(ev) {
       window.console.log(ev);
       this.$router.push({
@@ -37,14 +63,14 @@ export default {
     position: relative;
     margin-bottom: 10px;
     padding: 8px 16px 8px 0;
-    height: 200px;
+    height: 165px;
     background-color: #fff;
     .van-card__header {
       width: 100%;
       height: 100%;
       .van-card__thumb {
-        width: 160px;
-        height: 170px;
+        width: 155px;
+        height: 150px;
         padding-left: 10px;
       }
       .van-card__content {
