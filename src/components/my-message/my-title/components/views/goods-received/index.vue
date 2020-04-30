@@ -1,18 +1,16 @@
 <template>
     <div >
       <Title/>
-        <van-empty
-        class="custom-image"
-        image="https://img.yzcdn.cn/vant/custom-empty-image.png"
-        description="您还没有相关订单，可以去看看有哪些想买的！"
-        />
+      <ReceivedContent/>
     </div>
 </template>
 <script>
 import Title from '.././var'
+import ReceivedContent from './received-content/index'
 export default {
    components: {
-    Title
+    Title,
+    ReceivedContent
   },
 }
 </script>
