@@ -27,9 +27,12 @@ export default {
 .overlay-swipe {
   height: 150px;
   width: 100%;
-  img {
-    width: 100%;
-    height: 150px;
+  .van-swipe {
+    transform: translateZ(0);
+    img {
+      width: 100%;
+      height: 150px;
+    }
   }
 }
 </style>
