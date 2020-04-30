@@ -17,28 +17,28 @@
   </div>
 </template>
 <script>
-import appSelect from '../../../../api/serve/home/index'
+import {appSelect} from "../../../../api/serve/home/index";
 export default {
   data() {
     return {
-      dataList:[],
-      selectID:1
-    }
+      dataList: [],
+      selectID: 1
+    };
   },
   created() {
-    this.getData()
+    this.getData();
   },
   methods: {
     //获取商品信息
-    async getData(){
-      let type = this.selectID
+    async getData() {
+      let type = this.selectID;
       window.console.log(type);
       let res = await appSelect(type).then();
       try {
         if (res.code == 0) {
-          this.dataList = payload
+          this.dataList = res.payload;
         } else {
-          this.toPopUpWindows(res.msg);
+          // this.toPopUpWindows(res.msg);
         }
       } catch (error) {
         window.console.log(error);
@@ -46,17 +46,16 @@ export default {
     },
 
     onCard(ev) {
-      window.console.log(ev);
       this.$router.push({
-        path: '/detailPages?'+"id="+ev
-      })
+        path: "/detailPages?" + "id=" + ev
+      });
     }
   }
 };
 </script>
 <style lang="scss">
 .overlay-card {
-  .van-card:nth-child(1){
+  .van-card:nth-child(1) {
     margin-top: 10px;
   }
   .van-card {
@@ -76,17 +75,17 @@ export default {
       .van-card__content {
         font-size: 13px;
         color: #333;
-        div{
+        div {
           height: 50px;
           .van-card__title {
             line-height: 16px;
             font-size: 16px;
           }
-          .van-card__desc{
+          .van-card__desc {
             line-height: 30px;
           }
         }
-        
+
         .van-card__bottom {
           .van-card__price {
             color: #fe4070;
