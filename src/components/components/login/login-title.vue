@@ -109,7 +109,7 @@ export default {
     async toRegs() {
       let obj = {
         name: this.phone,
-        pass: md5(this.verificationCode)
+        pass: md5(this.regPawss)
       };
       let res = await regs(obj).then();
       try {

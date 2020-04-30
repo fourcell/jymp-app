@@ -14,40 +14,46 @@
 export default {
   data() {
     return {
-      getTitle:''
-    }
+      getTitle: ""
+    };
   },
   created() {
     this.init();
   },
-   methods: {
-     init(){
-      var str=location.href;
-      let i = str.split('/')
-      // switch(i[3]){
-      //   case 'myOrder':
-      //     return this.getTitle = '我的收藏'
-      //     break;
-      // }
-      if(i[3] == 'myOrder'){
-        this.getTitle = '我的订单'
-      }else 
-      if(i[3] == 'myCollection'){
-        this.getTitle = '我的收藏'
-      }else if(i[3] == 'myLocation'){
-        this.getTitle = '我的地址'
-      }else if(i[3] == 'myContact'){
-        this.getTitle = '联系人'
-      }else if(i[3] == 'setup'){
-        this.getTitle = '设置'
-      }else if(i[3] == 'payment'){
-        this.getTitle = '待付款'
-      }else if(i[3] == 'sendGoods'){
-        this.getTitle = '待发货'
-      }else if(i[3] == 'goodsReceived'){
-        this.getTitle = '待收货'
-      }else if(i[3] == 'taking'){
-        this.getTitle = '评价'
+  methods: {
+    init() {
+      let path = this.$route.path;
+
+      switch (path) {
+        case "/myOrder":
+          this.getTitle = "我的订单";
+          break;
+        case "/myCollection":
+          this.getTitle = "我的收藏";
+          break;
+        case "/myLocation":
+          this.getTitle = "我的地址";
+          break;
+        case "/myContact":
+          this.getTitle = "联系人";
+          break;
+        case "/setup":
+          this.getTitle = "设置";
+          break;
+        case "/payment":
+          this.getTitle = "待付款";
+          break;
+        case "/sendGoods":
+          this.getTitle = "待发货";
+          break;
+        case "/goodsReceived":
+          this.getTitle = "待收货";
+          break;
+        case "/taking":
+          this.getTitle = "评价";
+          break;
+        default:
+          break;
       }
     },
     toHome() {
