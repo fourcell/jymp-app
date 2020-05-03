@@ -1,17 +1,16 @@
 <template>
   <div class="overlay-card">
     <van-card
-      price="2.00"
-      origin-price="10.00"
-      desc="B01（升级）"
-      title="【sum37]=】 呼吸苏秘37度 经典惊喜水分气垫CC霜定妆"
-      thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
-      v-for="i in 4"
-      :key="i"
-      @click="onCard(i)"
+      v-for="(item,index) in dataList"
+      :key="index"
+      :price="item.vip_price"
+      :desc="item.describes"
+      :title="'【'+item.p_name+'】'+item.p_title"
+      :thumb="item.picture"
+      @click="onCard(index)"
     >
       <template #footer>
-        <p>2220条评论</p>
+        <p v-text="item.diss_num+'条评论'"></p>
       </template>
     </van-card>
   </div>
@@ -68,27 +67,25 @@ export default {
     position: relative;
     margin-bottom: 10px;
     padding: 8px 16px 8px 0;
-    height: 165px;
+    // height: 165px;
     background-color: #fff;
     .van-card__header {
       width: 100%;
       height: 100%;
       .van-card__thumb {
-        width: 155px;
-        height: 150px;
         padding-left: 10px;
       }
       .van-card__content {
-        font-size: 13px;
+        font-size: 10px;
         color: #333;
         div {
-          height: 50px;
           .van-card__title {
             line-height: 16px;
             font-size: 16px;
           }
           .van-card__desc {
-            line-height: 30px;
+            line-height: 25px;
+            margin-left: 10px;
           }
         }
 
