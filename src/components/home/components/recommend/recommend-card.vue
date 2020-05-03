@@ -17,7 +17,10 @@
   </div>
 </template>
 <script>
-import {appSelect} from "../../../../api/serve/home/index";
+import Vue from "vue";
+import { Dialog } from "vant";
+Vue.use(Dialog);
+import { appSelect } from "../../../../api/serve/home/index";
 export default {
   data() {
     return {
@@ -32,13 +35,16 @@ export default {
     //获取商品信息
     async getData() {
       let type = this.selectID;
-      window.console.log(type);
       let res = await appSelect(type).then();
       try {
         if (res.code == 0) {
           this.dataList = res.payload;
         } else {
-          // this.toPopUpWindows(res.msg);
+          Dialog.alert({
+            message: res.msg
+          }).then(() => {
+            // on close
+          });
         }
       } catch (error) {
         window.console.log(error);
