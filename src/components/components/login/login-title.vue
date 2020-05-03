@@ -169,6 +169,7 @@ export default {
         if (res.code == 0) {
           this.$router.push({ path: "/manage/myMessage" });
           setcookie("token", res.token);
+          setcookie("userId", res.userId);
         } else {
           this.toPopUpWindows(res.msg);
         }
