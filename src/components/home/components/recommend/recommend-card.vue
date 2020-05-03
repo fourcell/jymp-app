@@ -16,7 +16,10 @@
   </div>
 </template>
 <script>
-import {appSelect} from "../../../../api/serve/home/index";
+import Vue from "vue";
+import { Dialog } from "vant";
+Vue.use(Dialog);
+import { appSelect } from "../../../../api/serve/home/index";
 export default {
   data() {
     return {
@@ -35,7 +38,12 @@ export default {
       try {
         if (res.code == 0) {
           this.dataList = res.payload;
-          window.console.log(this.dataList);
+        } else {
+          Dialog.alert({
+            message: res.msg
+          }).then(() => {
+            // on close
+          });
         }
       } catch (error) {
         window.console.log(error);
