@@ -37,6 +37,7 @@
 <script>
 // import { Login } from "../../../api/serve/login";
 import { regs, login } from "../../../api/serve/login/index";
+import { setcookie } from "../../../api/common";
 import md5 from "../../../api/md5/index";
 import Vue from "vue";
 import { Dialog } from "vant";
@@ -167,6 +168,7 @@ export default {
       try {
         if (res.code == 0) {
           this.$router.push({ path: "/manage/myMessage" });
+          setcookie("token", res.token);
         } else {
           this.toPopUpWindows(res.msg);
         }
