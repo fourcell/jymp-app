@@ -35,7 +35,6 @@
 import Title from '../var'
 import {removeCookie,getcookie} from "../../../../../../api/common";
 import { Dialog } from "vant";
-import i from ''
 export default {
    components: {
     Title
