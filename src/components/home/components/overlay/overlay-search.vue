@@ -9,7 +9,7 @@
     >
       <template #action>
         <div v-show="!widthShow" class="go-back" @click="onGoBack">返回</div>
-        <div v-show="widthShow" class="go-back">搜索</div>
+        <div v-show="widthShow" class="go-back" @click="onSearch">搜索</div>
       </template>
       <template #left>
         <div v-show="widthShow" class="go-back" @click="onWindthShow(false)">
@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import { Search } from "../../../../api/serve/search";
 export default {
   data() {
     return {
@@ -37,6 +38,12 @@ export default {
     },
     onWindthShow(val) {
       this.$store.commit("widthShow", val);
+    },
+    onSearch() {
+      let parm = {
+        name: this.search
+      };
+      Search(parm);
     }
   }
 };
