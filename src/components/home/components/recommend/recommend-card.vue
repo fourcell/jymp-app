@@ -1,19 +1,25 @@
 <template>
-  <div class="overlay-card">
-    <van-card
-      v-for="(item,index) in dataList"
-      :key="index"
-      :price="item.vip_price"
-      :desc="item.describes"
-      :title="'【'+item.p_name+'】'+item.p_title"
-      :thumb="item.picture"
-      @click="onCard(index)"
-    >
+<div>
+    <div class="overlay-card">
+      <van-card
+        v-for="(item,index) in dataList"
+        :key="index"
+        :price="item.vip_price"
+        :desc="item.describes"
+        :title="'【'+item.p_name+'】'+item.p_title"
+        :thumb="item.img"
+        @click="onCard(item.product_id)"
+      >
       <template #footer>
         <p v-text="item.diss_num+'条评论'"></p>
       </template>
     </van-card>
   </div>
+  <div class="center_img">
+      <img v-for="(item,index) in imgList" :key="index" :src="item" alt="">
+  </div>
+</div>
+  
 </template>
 <script>
 import Vue from "vue";
@@ -24,6 +30,12 @@ export default {
   data() {
     return {
       dataList: [],
+       imgList: [
+        'http://mp6.jmstatic.com//jmstore/image/000/009/9008_std/5ea95effea013_2048_710.jpg?1588332544&imageView2/2/w/800/q/90',
+        'http://mp5.jmstatic.com//jmstore/image/000/009/9134_std/5eaa808f9def8_2048_710.jpg?1588236022&imageView2/2/w/800/q/90',
+        'http://mp6.jmstatic.com//jmstore/image/000/007/7950_std/5e9e68318e36c_2048_710.jpg?1588140114&imageView2/2/w/800/q/90',
+        'http://mp5.jmstatic.com//jmstore/image/000/009/9255_std/5eaa474e1fc5e_2048_710.jpg?1588238336&imageView2/2/w/800/q/90'
+      ],
       selectID: 1
     };
   },
@@ -33,7 +45,7 @@ export default {
   methods: {
     //获取商品信息
     async getData() {
-      let type = this.selectID;
+      let type = this.selectID
       let res = await appSelect(type).then();
       try {
         if (res.code == 0) {
@@ -41,9 +53,7 @@ export default {
         } else {
           Dialog.alert({
             message: res.msg
-          }).then(() => {
-            // on close
-          });
+          }).then(() => {});
         }
       } catch (error) {
         window.console.log(error);
@@ -59,6 +69,11 @@ export default {
 };
 </script>
 <style lang="scss">
+.center_img img{
+    width: 100%;
+    height: 180px;
+    margin-top:10px
+}
 .overlay-card {
   .van-card:nth-child(1) {
     margin-top: 10px;
@@ -90,11 +105,13 @@ export default {
         }
 
         .van-card__bottom {
+            margin-bottom: 15px;
+            margin-left: 10px;
           .van-card__price {
             color: #fe4070;
-            font-size: 20px;
+            font-size: 16px;
             .van-card__price-integer {
-              font-size: 20px;
+              font-size: 16px;
             }
           }
           .van-card__origin-price {
@@ -106,8 +123,8 @@ export default {
     }
     .van-card__footer {
       position: absolute;
-      right: 16px;
-      bottom: 10px;
+      left: 115px;
+      bottom: -20px;
       margin-bottom: 26px;
       color: #999;
       font-size: 11px;

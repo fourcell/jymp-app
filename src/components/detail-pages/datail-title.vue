@@ -1,6 +1,6 @@
 <template>
   <div class="datail-title">
-    <van-nav-bar title="【15号十点开售】完美日记天赋干皮粉底液深水弹女保湿持久干皮" left-arrow>
+    <van-nav-bar left-arrow>
       <template #right>
         <van-icon name="wap-home-o" color="#ccc" size="22" @click="toHome" />
       </template>

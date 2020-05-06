@@ -1,4 +1,11 @@
 import { post } from '../../http'
+import { get } from '../../http'
 
 //添加到购物车
 export const setShopping = parm => post('/setShopping', parm)
+
+//详情页数据获取
+export const appDatails = parm => get(`/appDatails?id=${parm}`)
+
+//购物车数据获取
+export const getShopping = parm => get(`/getShopping?userId=${parm}`)

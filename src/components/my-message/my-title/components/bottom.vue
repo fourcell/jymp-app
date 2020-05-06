@@ -17,7 +17,6 @@
             <van-cell icon="friends" title="联系人" size="large" is-link value="编辑" to="/myContact"/>
         </van-cell-group>
         <van-cell-group class="order">
-            <van-cell icon="hot" title="热卖商品" size="large" is-link  />
             <van-cell icon="setting" title="设置" size="large" is-link value="编辑" to="/setup" />
         </van-cell-group>
     </div>
@@ -33,7 +32,7 @@ export default {
 <style scoped>
 .order{
     width: 100%;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     background-color: #f5f5f5;
 }
 </style>

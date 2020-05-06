@@ -1,5 +1,5 @@
 <template>
-  <div class="empty-shopping" v-if="false">
+  <div class="empty-shopping">
     <div class="shopping-oops">
       <div class="oops avnter">
         <img :src="noCardops" alt />

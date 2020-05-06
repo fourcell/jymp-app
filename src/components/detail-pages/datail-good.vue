@@ -2,37 +2,22 @@
   <div class="datail_goods_box">
     <div class="datail-good" v-if="takeShow">
       <DatailTitle/>
-      <van-swipe @change="onChange">
-        <van-swipe-item>
+      <van-swipe>
+        <van-swipe-item v-for="(item,index) in list" :key="index">
           <div class="good-img">
-            <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt/>
-          </div>
-        </van-swipe-item>
-        <van-swipe-item>
-          <div class="good-img">
-            <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt/>
-          </div>
-        </van-swipe-item>
-        <van-swipe-item>
-          <div class="good-img">
-            <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt/>
-          </div>
-        </van-swipe-item>
-        <van-swipe-item>
-          <div class="good-img">
-            <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt/>
+            <img :src="item.previewImgUrl" alt/>
           </div>
         </van-swipe-item>
       </van-swipe>
       <div class="good-price">
-        <span>￥109.9</span>
-        <span>￥219</span>
+        <span v-text="'￥'+ datailData.vip_price">></span>
+        <span v-text="'￥'+ datailData.price"></span>
       </div>
-      <div class="good-title">【15号十点开售】完美日记天赋干皮粉底液深水弹女保湿持久干皮</div>
+      <div class="good-title">{{datailData.title}}</div>
       <div class="good-cell">
         <van-cell icon="balance-o" title="促销" value="暂无促销"/>
-        <van-cell icon="location-o" title="发货：广东广州  /  快递：免运费" value="月销336笔" />
-        <van-cell icon='chat-o' :title="'宝贝评价('+this.takeData+')'"  is-link value="查看全部" @click="datailTaking_show"/>
+        <van-cell icon="location-o" title="发货：广东广州  /  快递：免运费" :value="'月销'+datailData.sales+'笔'" />
+        <van-cell icon='chat-o' :title="'宝贝评价('+datailData.is_put+')'"  is-link value="查看全部" @click="datailTaking_show"/>
       </div>
       <DatailFooter/>
     </div>
@@ -43,6 +28,8 @@
 import DatailTaking from './datail-taking'
 import DatailTitle from './datail-title'
 import DatailFooter from "./datail-footer";
+import {appDatails} from "../../api/serve/shopping/index";
+import { Dialog } from "vant";
 export default {
   components:{
     DatailTaking,
@@ -52,13 +39,34 @@ export default {
   data() {
     return {
       takeData:66,
-      takeShow:true
+      takeShow:true,
+      datailData:[],
+      list:[]
     }
   },
+  created() {
+    this.getData()
+  },
   methods: {
-    onChange(index) {
-      console.log(index);
-      
+    //获取商品详情
+    async getData(){
+      let str = (decodeURI(location.search)).split('=')
+      let id = str[1];
+      let res = await appDatails(id).then();
+      try {
+        if (res.code == 0) {
+          this.datailData = res.payload.param;
+          window.console.log(res);
+          this.list = res.payload.sku.tree[0].v
+        } else {
+          Dialog.alert({
+            message: res.msg
+          }).then(() => {
+          });
+        }
+      } catch (error) {
+        window.console.log(error);
+      }
     },
     datailTaking_show(){
       this.takeShow = false

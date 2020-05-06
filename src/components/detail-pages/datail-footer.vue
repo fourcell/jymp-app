@@ -1,5 +1,6 @@
 <template>
   <div>
+    <goodSku :addGoods="addGoods" ref="goodSku" />
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" color="#07c160" />
       <van-goods-action-icon icon="cart-o" to="/manage/shoppingTrolley" text="购物车" />
@@ -14,19 +15,19 @@
       <van-goods-action-button type="warning" text="加入购物车" @click="onShopping" />
       <van-goods-action-button type="danger" text="立即购买" />
     </van-goods-action>
-    <!-- <goodSku/> -->
   </div>
 </template>
 <script>
-// import goodSku from './datail-sku'
-import { setShopping } from "../../api/serve/shopping/index";
+import goodSku from "./datail-sku";
+// import { setShopping } from "../../api/serve/shopping/index";
 export default {
-  // components:{
-  //     goodSku
-  // },
+  components: {
+    goodSku
+  },
   data() {
     return {
-      isShow: true
+      isShow: true,
+      addGoods: false
     };
   },
   methods: {
@@ -36,17 +37,22 @@ export default {
     show() {
       this.isShow = true;
     },
+    toShow(val) {
+      this.addGoods = val;
+    },
     onShopping() {
-      window.console.log(666);
-      let parm = {
-        skuId: 123, //skuID
-        userId: 123456789,  //用户id
-        procuctId: 9876,    //商品id
-        shoppingNumber: 20  //购买数量
-      };
-      setShopping(parm).then(data => {
-        window.console.log(data);
-      });
+        this.$refs.goodSku.toShow(true);
+      //   this.addGoods = true;
+      //   window.console.log(666);
+      //   let parm = {
+      //     skuId: 123, //skuID
+      //     userId: 123456789,  //用户id
+      //     procuctId: 9876,    //商品id
+      //     shoppingNumber: 20  //购买数量
+      //   };
+      //   setShopping(parm).then(data => {
+      //     window.console.log(data);
+      //   });
     }
   }
 };
