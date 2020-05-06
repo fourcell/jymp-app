@@ -19,7 +19,7 @@
 </template>
 <script>
 import goodSku from "./datail-sku";
-// import { setShopping } from "../../api/serve/shopping/index";
+import { setShopping } from "../../api/serve/shopping/index";
 export default {
   components: {
     goodSku
@@ -44,15 +44,15 @@ export default {
         this.$refs.goodSku.toShow(true);
       //   this.addGoods = true;
       //   window.console.log(666);
-      //   let parm = {
-      //     skuId: 123, //skuID
-      //     userId: 123456789,  //用户id
-      //     procuctId: 9876,    //商品id
-      //     shoppingNumber: 20  //购买数量
-      //   };
-      //   setShopping(parm).then(data => {
-      //     window.console.log(data);
-      //   });
+        let parm = {
+          skuId: 1, //skuID
+          userId: 17,  //用户id
+          procuctId: 1,    //商品id
+          shoppingNumber: 20  //购买数量
+        };
+        setShopping(parm).then(data => {
+          window.console.log(data);
+        });
     }
   }
 };
