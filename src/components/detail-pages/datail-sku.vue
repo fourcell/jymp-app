@@ -14,6 +14,8 @@
 </template>
 <script>
 import { appDatails } from "../../api/serve/shopping/index";
+import { setShopping } from "../../api/serve/shopping/index";
+import {getcookie} from "../../api/common";
 import { Dialog } from "vant";
 
 export default {
@@ -21,6 +23,8 @@ export default {
     return {
       show: false,
       goodsId: 1,
+      id: Number,
+      userId:'',
       quota: 0,
       quotaUsed: 0,
       sku: {},
@@ -33,18 +37,18 @@ export default {
   },
   created() {
     this.getData()
+    this.userId = getcookie("userId")
   },
   methods: {
     //获取商品详情
     async getData(){
       let str = (decodeURI(location.search)).split('=')
-      let id = str[1];
-      let res = await appDatails(id).then();
+      this.id = str[1];
+      let res = await appDatails(this.id).then();
       try {
         if (res.code == 0) {
           this.sku = res.payload.sku;
           this.goods.picture = this.sku.tree[0].v[0].previewImgUrl
-          // window.console.log(this.sku.tree[0].v[0].previewImgUrl);
         } else {
           Dialog.alert({
             message: res.msg
@@ -59,10 +63,29 @@ export default {
       this.show = val;
     },
     onBuyClicked() {
-      window.console.log(this.$refs.goodsSku.getSkuData());
+      // window.console.log(this.$refs.goodsSku.getSkuData());
+      let obj = this.$refs.goodsSku.getSkuData()
+      let parm = {
+          skuId: obj.selectedSkuComb.id, //skuID
+          userId: this.userId,  //用户id
+          procuctId: this.id,    //商品id
+          shoppingNumber: obj.selectedNum  //购买数量
+        };
+        setShopping(parm).then(data => {
+          window.console.log(data);
+        });
     },
     onAddCartClicked(val) {
       window.console.log(val);
+      let parm = {
+          skuId: val.selectedSkuComb.id, //skuID
+          userId: this.userId,  //用户id
+          procuctId: this.id,    //商品id
+          shoppingNumber: val.selectedNum //购买数量
+        };
+        setShopping(parm).then(data => {
+          window.console.log(data);
+        });
     }
   }
 };

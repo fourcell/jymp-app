@@ -13,13 +13,12 @@
       />
       <van-goods-action-icon icon="star" @click="show" v-else text="已收藏" color="#ff5000" />
       <van-goods-action-button type="warning" text="加入购物车" @click="onShopping" />
-      <van-goods-action-button type="danger" text="立即购买" />
+      <van-goods-action-button type="danger" text="立即购买" @click="onShopping" />
     </van-goods-action>
   </div>
 </template>
 <script>
 import goodSku from "./datail-sku";
-import { setShopping } from "../../api/serve/shopping/index";
 export default {
   components: {
     goodSku
@@ -41,19 +40,8 @@ export default {
       this.addGoods = val;
     },
     onShopping() {
-        this.$refs.goodSku.toShow(true);
-      //   this.addGoods = true;
-      //   window.console.log(666);
-        let parm = {
-          skuId: 1, //skuID
-          userId: 17,  //用户id
-          procuctId: 1,    //商品id
-          shoppingNumber: 20  //购买数量
-        };
-        setShopping(parm).then(data => {
-          window.console.log(data);
-        });
-    }
+      this.$refs.goodSku.toShow(true);
+    },
   }
 };
 </script>

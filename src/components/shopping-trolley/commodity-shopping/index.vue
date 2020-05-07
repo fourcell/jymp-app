@@ -1,17 +1,17 @@
 <template>
-<div>
+<div class="shopping_box">
   <EmptyShopping v-if="list.length == 0"/>
   <div v-else class="all-shopping">
     <div class="commodit-shopping">
-      <div class="shopping-card" v-for="item in list" :key="item">
+      <div class="shopping-card" v-for="(item,index) in list" :key="index">
         <div class="card-checked">
           <van-checkbox v-model="checked" checked-color="#fe4070" icon-size="20px" />
         </div>
         <div class="card-img">
-          <van-image width="120" height="130" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+          <van-image width="120" height="130" :src="item.img" />
         </div>
         <div class="card-conent">
-          <p class="card-conent__titlel" v-text="'【'+item.p_name+'】'+item.p_title">【15号十点开售】完美日记天赋干皮粉底液深水弹女保湿持久干皮</p>
+          <p class="card-conent__titlel" v-text="'【'+item.p_name+'】'+item.p_title"></p>
           <p class="card-conent__sub" v-show="updateShow">
             <span>{{item.describes}}</span>
             <span v-text="'x'+item.num"></span>
@@ -80,14 +80,19 @@ export default {
 };
 </script>
 <style lang="scss">
+.shopping_box{
+  width: 100%;
+  height: 100%;
+}
 .all-shopping {
   height: 100%;
+  width: 100%;
+  margin-bottom: 100px;
   .commodit-shopping {
     position: relative;
     height: 100%;
     overflow: scroll;
     width: 100%;
-    padding-bottom: 110px;
     background-color: #f5f5f5;
     .shopping-card {
       background-color: #fff;
@@ -95,26 +100,30 @@ export default {
       margin-top: 10px;
       padding-left: 8px;
       display: flex;
-      height: 150px;
+      height: 115px;
+      // width: 100%;
       align-items: center;
       .card-img {
         padding-left: 8px;
       }
       .card-conent {
-        padding: 0 12px;
+        // padding: 0 12px;
         height: 100%;
+        width: 190px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         .card-conent__titlel {
           color: #333;
           font-size: 15px;
+          height: 35px;
         }
         .card-conent__sub {
           color: #999;
           font-size: 12px;
           display: flex;
           line-height: 30px;
+          height: 38px;
           justify-content: space-between;
         }
         .card-conent__stepper {
