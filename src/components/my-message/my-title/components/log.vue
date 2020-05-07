@@ -38,7 +38,6 @@ export default {
   methods: {
     init(){
       this.userName = getcookie("token")
-      console.log(this.userName);
     },
     toRegister() {
       this.$router.push({ path: "/register" });

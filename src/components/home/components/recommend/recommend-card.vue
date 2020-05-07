@@ -1,6 +1,8 @@
 <template>
 <div>
-    <div class="overlay-card">
+  <Service/>
+  <Section2/>
+  <div class="overlay-card">
       <van-card
         v-for="(item,index) in dataList"
         :key="index"
@@ -10,14 +12,16 @@
         :thumb="item.img"
         @click="onCard(item.product_id)"
       >
-      <template #footer>
-        <p v-text="item.diss_num+'条评论'"></p>
-      </template>
-    </van-card>
+        <template #footer>
+          <p v-text="item.diss_num+'条评论'"></p>
+        </template>
+      </van-card>
   </div>
   <div class="center_img">
-      <img v-for="(item,index) in imgList" :key="index" :src="item" alt="">
+      <img src="http://mp5.jmstatic.com//jmstore/image/000/001/1279_std/5ea8f31fda15d_2048_1024.jpg?1588131059&imageView2/2/w/640/q/90" alt="">
   </div>
+  <Section3/>
+  <Section4/>
 </div>
   
 </template>
@@ -26,16 +30,17 @@ import Vue from "vue";
 import { Dialog } from "vant";
 Vue.use(Dialog);
 import { appSelect } from "../../../../api/serve/home/index";
+import Service from './service'
+import Section2 from './section2'
+import Section3 from './section3'
+import Section4 from './section4'
+
 export default {
+  components:{Service,Section2,Section3,Section4},
   data() {
     return {
       dataList: [],
-       imgList: [
-        'http://mp6.jmstatic.com//jmstore/image/000/009/9008_std/5ea95effea013_2048_710.jpg?1588332544&imageView2/2/w/800/q/90',
-        'http://mp5.jmstatic.com//jmstore/image/000/009/9134_std/5eaa808f9def8_2048_710.jpg?1588236022&imageView2/2/w/800/q/90',
-        'http://mp6.jmstatic.com//jmstore/image/000/007/7950_std/5e9e68318e36c_2048_710.jpg?1588140114&imageView2/2/w/800/q/90',
-        'http://mp5.jmstatic.com//jmstore/image/000/009/9255_std/5eaa474e1fc5e_2048_710.jpg?1588238336&imageView2/2/w/800/q/90'
-      ],
+      //  imgList: ['http://mp5.jmstatic.com//jmstore/image/000/001/1279_std/5ea8f31fda15d_2048_1024.jpg?1588131059&imageView2/2/w/640/q/90'],
       selectID: 1
     };
   },
@@ -72,12 +77,12 @@ export default {
 .center_img img{
     width: 100%;
     height: 180px;
-    margin-top:10px
+    // margin-top:10px
 }
 .overlay-card {
-  .van-card:nth-child(1) {
-    margin-top: 10px;
-  }
+  // .van-card:nth-child(1) {
+  //   margin-top: 10px;
+  // }
   .van-card {
     position: relative;
     margin-bottom: 10px;

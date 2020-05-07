@@ -59,10 +59,7 @@ export default {
         removeCookie("token", '');
         removeCookie("userId", '');
         this.$router.push('/manage/myMessage')
-      }).catch(() => {
-        console.log(999);
-        
-      });
+      }).catch(() => {});
       
     }
   },
