@@ -1,6 +1,6 @@
 <template>
   <div class="shopping">
-    <van-nav-bar title="购物车">
+    <van-nav-bar :title="getTitle">
       <template #left>
         <van-icon name="arrow-left" size="18" color="#999" @click="toReverse" />
       </template>
@@ -12,6 +12,22 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      getTitle:''
+    }
+  },
+  created() {
+    let path = this.$route.path
+    switch (path) {
+      case '/manage/groupBooking':
+        this.getTitle = '分类'
+        break
+      case '/manage/shoppingTrolley':
+        this.getTitle = '购物车'
+        break
+    }
+  },
   methods: {
     toHome() {
       this.$router.push({ path: "/manage/home/recommend" });

@@ -30,6 +30,7 @@ import Vue from "vue";
 import { Dialog } from "vant";
 Vue.use(Dialog);
 import { appSelect } from "../../../../api/serve/home/index";
+
 import Service from './service'
 import Section2 from './section2'
 import Section3 from './section3'
@@ -40,7 +41,6 @@ export default {
   data() {
     return {
       dataList: [],
-      //  imgList: ['http://mp5.jmstatic.com//jmstore/image/000/001/1279_std/5ea8f31fda15d_2048_1024.jpg?1588131059&imageView2/2/w/640/q/90'],
       selectID: 1
     };
   },
@@ -77,7 +77,6 @@ export default {
 .center_img img{
     width: 100%;
     height: 180px;
-    // margin-top:10px
 }
 .overlay-card {
   // .van-card:nth-child(1) {

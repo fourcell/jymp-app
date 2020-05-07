@@ -1,102 +1,33 @@
 <template>
-  <div class="product-con">
-    <div class="goods" v-for="i in 4" :key="i" @click="onListPage">
-      <div class="goods-topsmall">
-        <img
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-          alt
-        />
-        <p>2556条评论</p>
-      </div>
-      <div class="goods-middle">
-        <span>【手机专享】JM蜂蜜/急救/燕窝面膜 多款可选</span>
-      </div>
-      <div class="goods-foot">
-        <P>
-          <span>¥42</span>
-          <span>单买价¥99</span>
-        </P>
-        <van-button round type="info" size="small" color="#fe4070">去选购</van-button>
-      </div>
-    </div>
+  <div>
+      <van-grid :column-num="3">
+          <van-grid-item v-for="(item,index) in gridList" :key="index">
+              <van-image :src="item.imgUrl">
+              <template v-slot:error>加载失败</template>
+              </van-image>
+              <span>{{item.text}}</span>
+          </van-grid-item>
+      </van-grid>
   </div>
 </template>
 <script>
 export default {
-  methods:{
-    onListPage(){
-      window.console.log(666)
+  props: ['gridList'],
+  data () {
+    return {
     }
   }
 };
 </script>
-<style lang="scss">
-.product-con {
-  width: 100%;
-  height: auto;
-  background-color: #f5f5f5;
-  padding-bottom: 50px;
-  .goods {
-    width: 100%;
-    background-color: #fff;
-    margin-bottom: 10px;
-     padding-bottom: 10px;
-    .goods-topsmall {
-      position: relative;
-      height: 155px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      img {
-        width: 150px;
-        height: 150px;
-      }
-      p {
-        position: absolute;
-        height: 12px;
-        font-size: 12px;
-        padding: 4px 7px;
-        background: rgba(251, 251, 251, 0.8);
-        border: 1px solid #eee;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        line-height: 12px;
-        left: 0;
-        top: 50%;
-      }
+<style lang="scss" scoped>
+.van-grid-item__content{
+    padding: 16px 1px;
+    span{
+      font-size: 14px;
     }
-    .goods-middle {
-      padding: 0 12px 10px 12px;
-      span {
-        font-size: 14px;
-        line-height: 18px;
-      }
+    .van-image__img {
+        width: 90%;
+        height: 90%;
     }
-    .goods-foot {
-      display: flex;
-      padding: 0 32px 0 12px;
-      justify-content: space-between;
-      align-items: center;
-      p {
-        display: flex;
-        flex-direction: column;
-        span:nth-child(1) {
-          color: #fe4070;
-          font-size: 18px;
-          display: block;
-        }
-
-        span:nth-child(2) {
-          color: #999;
-          display: block;
-          font-size: 12px;
-        }
-      }
-      .van-button {
-        padding: 0 15px;
-        font-size: 16px;
-      }
-    }
-  }
 }
 </style>

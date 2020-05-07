@@ -1,7 +1,7 @@
 <template lang="html">
   <section class="section3">
     <ul class="section3-list">
-      <li v-for="k in imgPath" :key='k.id'>
+      <li v-for="k in list" :key='k.id'>
         <div class="section3-list-left">
           <h4>【澳洲直邮】</h4>
           <p class="start"> Starts at </p>
@@ -16,8 +16,8 @@
             </van-count-down>
         </div>
         <router-link :to="{name:'分类页'}" class="section3-list-right">
-          <img :src="k">
-          <span>$88</span>
+          <img :src="k.imgPath">
+          <span>${{k.price}}</span>
         </router-link>
       </li>
     </ul>
@@ -32,31 +32,24 @@
     data() {
       return {
         time: 30 * 60 * 60 * 1000,
-        list:[],
-        banner:'',
-        dom: [{
-          num1: '',
-          num2: '',
-          num3: ''
-        }, {
-          num1: '',
-          num2: '',
-          num3: ''
-        }, {
-          num1: '',
-          num2: '',
-          num3: ''
-        }, {
-          num1: '',
-          num2: '',
-          num3: ''
-        }],
-        imgPath:[
-            'http://mp6.jmstatic.com/product/004/900/4900234_std/4900234_1000_1000.jpg?v=1584410791&imageView2/2/w/440/q/90',
-            'http://mp6.jmstatic.com/product/004/884/4884194_std/4884194_1000_1000.jpg?v=1587540192&imageView2/2/w/440/q/90',
-            'http://mp6.jmstatic.com/product/004/967/4967034_std/4967034_1000_1000.jpg?v=1587107383&imageView2/2/w/440/q/90',
-            'http://mp5.jmstatic.com/product/005/020/5020322_std/5020322_1000_1000.jpg?v=1578475059&imageView2/2/w/440/q/90'
-        ]
+        list:[
+            {
+                imgPath:'http://mp6.jmstatic.com/product/004/900/4900234_std/4900234_1000_1000.jpg?v=1584410791&imageView2/2/w/440/q/90',
+                price:'398'
+            },
+            {
+                imgPath:'http://mp6.jmstatic.com/product/004/884/4884194_std/4884194_1000_1000.jpg?v=1587540192&imageView2/2/w/440/q/90',
+                price:'198'
+            },
+            {
+                imgPath:'http://mp6.jmstatic.com/product/004/967/4967034_std/4967034_1000_1000.jpg?v=1587107383&imageView2/2/w/440/q/90',
+                price:'288'
+            },
+            {
+                imgPath:'http://mp5.jmstatic.com/product/005/020/5020322_std/5020322_1000_1000.jpg?v=1578475059&imageView2/2/w/440/q/90',
+                price:'129'
+            },
+        ],
       }
     },
   }
@@ -121,7 +114,7 @@
             bottom: .4vw;
             right: .2vw;
             // background-color: @cl;
-            color: #fff;
+            color: #ee0a24;
             // .fz(font-size,24);
           }
         }
