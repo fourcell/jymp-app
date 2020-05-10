@@ -5,6 +5,7 @@
     default-tag-text="默认"
     @add="onAdd"
     @edit="onEdit"
+    @select='onSelect'
     />
 </template>
 <script>
@@ -37,6 +38,11 @@ export default {
     onEdit(item, index) {
       Toast('编辑地址:' + index);
     },
+    onSelect(item){
+      if(this.$route.query && this.$route.query.entrance === '1'){
+        this.$router.push({ path: "/sureOrder",query:{list:this.$route.query.goodlist, address:item} })
+      }
+    }
   },
 };    
 

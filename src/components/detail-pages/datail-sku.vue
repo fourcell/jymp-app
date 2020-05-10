@@ -48,7 +48,13 @@ export default {
       try {
         if (res.code == 0) {
           this.sku = res.payload.sku;
+          this.sku.list.forEach(item => {
+            item.price *= 100
+          });
+          this.sku.price = this.sku.price.toFixed(2)
           this.goods.picture = this.sku.tree[0].v[0].previewImgUrl
+          console.log(this.sku,this.goods.picture);
+          
         } else {
           Dialog.alert({
             message: res.msg

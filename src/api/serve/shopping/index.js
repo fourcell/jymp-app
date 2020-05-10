@@ -9,3 +9,9 @@ export const appDatails = parm => get(`/appDatails?id=${parm}`)
 
 //购物车数据获取
 export const getShopping = parm => get(`/getShopping?userId=${parm}`)
+
+//删除购物车单个数据
+export const deleteShopping = (userId,skuId) => get(`/deleteShopping?userId=${userId}&skuId=${skuId}`)
+
+//获取确认订单的数据
+export const setOrder = parm => post('/setOrder', parm)

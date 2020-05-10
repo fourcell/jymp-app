@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     onStroll() {
-      window.console.log(666);
+      this.$router.push('/manage/home/recommend')
     }
   }
 };

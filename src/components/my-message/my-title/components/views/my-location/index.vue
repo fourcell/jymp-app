@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div class="address">
       <Title/>
       <AddressList v-if="addressShow == false && addressHide"/>
       <AddressEdit v-else @addList = 'addList'/>
@@ -32,6 +32,14 @@ export default {
 };
 </script>
 <style scoped>
+.address{
+  background: #f5f5f5;
+  height: 615px;
+}
+.van-address-list{
+  height: 100%;
+  background: #f5f5f5;
+}
   .custom-image .van-empty__image {
     width: 90px;
     height: 90px;

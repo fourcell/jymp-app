@@ -26,6 +26,9 @@ export default {
       case '/manage/shoppingTrolley':
         this.getTitle = '购物车'
         break
+      case '/sureOrder':
+        this.getTitle = '支付订单'
+        break
     }
   },
   methods: {

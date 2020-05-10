@@ -1,8 +1,8 @@
 <template>
   <div class="shopping">
     <van-nav-bar :title="getTitle">
-      <template #left>
-        <van-icon name="arrow-left" size="18" color="#999" @click="toReverse" />
+      <template v-show="this.$route.query.entrance !== '1'" #left>
+        <van-icon  name="arrow-left" size="18" color="#999" @click="toReverse" />
       </template>
       <template #right>
         <van-icon name="wap-home-o" size="18" color="#999" @click="toHome" />
@@ -60,7 +60,11 @@ export default {
       this.$router.push({ path: "/manage/home/recommend" });
     },
     toReverse() {
+      if(this.$route.path=="/myLocation" && this.$route.query && this.$route.query.entrance === '1') {
+        this.$router.push({ path: "/sureOrder",query:{list:this.$route.query.goodlist} })
+      } else {
       this.$router.go(-1);
+      }
     }
   }
 };
