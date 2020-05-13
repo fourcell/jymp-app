@@ -1,16 +1,26 @@
 <template>
   <div v-show="!widthShow">
     <van-collapse v-model="activeName" accordion>
-      <van-collapse-item title="标题1" name="1">
+      <van-collapse-item title="轻奢" name="1">
         <template>
-          <p>1</p>
-          <p>2</p>
-          <p>3</p>
-          <p>4</p>
+          <p
+           v-for="(item,index) in dataList1"
+           :key="index"
+          >{{item}}</p>
         </template>
       </van-collapse-item>
-      <van-collapse-item title="标题2" name="2">内容</van-collapse-item>
-      <van-collapse-item title="标题3" name="3">内容</van-collapse-item>
+      <van-collapse-item title="美妆" name="2">
+        <p
+           v-for="(item,index) in dataList2"
+           :key="index"
+          >{{item}}</p>
+      </van-collapse-item>
+      <van-collapse-item title="女装" name="3">
+        <p
+           v-for="(item,index) in dataList3"
+           :key="index"
+          >{{item}}</p>
+      </van-collapse-item>
     </van-collapse>
   </div>
 </template>
@@ -18,7 +28,10 @@
 export default {
   data() {
     return {
-      activeName: "1"
+      activeName: "1",
+      dataList1:['DW手表','阿玛尼唇釉','香奈儿套装','海蓝之谜'],
+      dataList2:['天气皇后套装','水妍护肤套装','圣罗兰 黑管唇釉','TOM FORD 激情幻魅唇膏','纪梵希 新禁忌之吻唇膏'],
+      dataList3:['女士时尚套装','旗袍','复古长裙','质感毛衣'],
     };
   },
   computed:{
@@ -39,6 +52,7 @@ export default {
     margin: 0px;
     margin-bottom: 2px;
     padding-left: 30px;
+    line-height: 45px;
   }
 }
 </style>

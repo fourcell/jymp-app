@@ -17,6 +17,7 @@
         </div>
       </template>
     </van-search>
+    <van-cell v-for="(item,index) in searhData" :key="index" :title="item.p_name" />
   </div>
 </template>
 <script>
@@ -24,7 +25,8 @@ import { Search } from "../../../../api/serve/search";
 export default {
   data() {
     return {
-      search: ""
+      search: "",
+      searhData:[]
     };
   },
   computed: {
@@ -35,15 +37,25 @@ export default {
   methods: {
     onGoBack() {
       this.$store.commit("show", false);
+      this.search = ''
+      this.searhData = [] 
     },
     onWindthShow(val) {
       this.$store.commit("widthShow", val);
     },
-    onSearch() {
+    async onSearch() {
       let parm = {
         name: this.search
       };
-      Search(parm);
+      let res = await Search(parm).then();
+      try {
+        if(res.code === 0){
+          console.log(res);
+          this.searhData = res.param
+        }
+      }catch (error) {
+        window.console.log(error);
+      }
     }
   }
 };

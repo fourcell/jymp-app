@@ -29,6 +29,7 @@ export default {
     onWindthShow() {
       this.$store.commit("show", true);
       this.$store.commit("widthShow", true);
+      this.search = ''
     }
   }
 };

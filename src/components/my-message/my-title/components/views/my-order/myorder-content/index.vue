@@ -2,24 +2,11 @@
     <div >
       <van-cell-group>
         <van-card
-          num="1"
-          price="2.00"
-          desc="B01（升级）"
-          title="完美日记天赋干皮粉底液深水弹女保湿持久干皮"
-          thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
-        >
-          <template #footer>
-            <van-button size="mini" round plain color="rgb(254, 64, 112)">卖了换钱</van-button>
-            <van-button size="mini" round plain color="rgb(254, 64, 112)">查看物流</van-button>
-            <van-button size="mini" round plain color="rgb(254, 64, 112)">评价</van-button>
-          </template>
-        </van-card>
-      </van-cell-group>
-      <van-cell-group class="order">
-        <van-card
-          num="1"
-          price="2.00"
-          desc="B01（升级）"
+          v-for="(item,index) in orderList"
+          :key="index"
+          :num="item.p_num"
+          :price="item.pay_total"
+          :desc="item.adderss"
           title="完美日记天赋干皮粉底液深水弹女保湿持久干皮"
           thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
         >
@@ -33,8 +20,38 @@
     </div>
 </template>
 <script>
+import {getcookie} from '../../../../../../../api/common'
+import {getOrder} from '../../../../../../../api/serve/shopping'
+import { Dialog } from "vant";
+
 export default {
-  
+  data() {
+    return {
+      orderList:[]
+    }
+  },
+  created() {
+    this.getData()
+  },
+  methods: {
+    async getData(){
+      let userId = getcookie("userId")
+      let res = await getOrder(userId).then();
+      try {
+        if (res.code == 0) {
+          console.log(res);
+          this.orderList = res.param
+        } else {
+          Dialog.alert({
+            message: res.msg
+          }).then(() => {
+          });
+        }
+      } catch (error) {
+        window.console.log(error);
+      }
+    },
+  },
 }
 </script>
 <style scoped>

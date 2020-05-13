@@ -19,6 +19,7 @@ export default {
    created() {
        this.list = this.$route.query.list
    },
+   
 }
 </script>
 <style scoped>

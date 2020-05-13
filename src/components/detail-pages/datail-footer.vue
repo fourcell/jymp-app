@@ -19,6 +19,8 @@
 </template>
 <script>
 import goodSku from "./datail-sku";
+import { Toast } from 'vant';
+import {getcookie} from "../../api/common";
 export default {
   components: {
     goodSku
@@ -40,7 +42,13 @@ export default {
       this.addGoods = val;
     },
     onShopping() {
-      this.$refs.goodSku.toShow(true);
+       let userName = getcookie("token")
+       if(userName == undefined){
+         Toast('没有登录，请先登录');
+         this.$router.push('/Login')
+       }else{
+         this.$refs.goodSku.toShow(true);
+       }
     },
   }
 };

@@ -17,6 +17,7 @@ import { appDatails } from "../../api/serve/shopping/index";
 import { setShopping } from "../../api/serve/shopping/index";
 import {getcookie} from "../../api/common";
 import { Dialog } from "vant";
+import { Toast } from 'vant';
 
 export default {
   data() {
@@ -69,28 +70,38 @@ export default {
       this.show = val;
     },
     onBuyClicked() {
-      // window.console.log(this.$refs.goodsSku.getSkuData());
+      window.console.log(this.$refs.goodsSku.getSkuData().selectedSkuComb.price/100);
       let obj = this.$refs.goodsSku.getSkuData()
       let parm = {
-          skuId: obj.selectedSkuComb.id, //skuID
+          skuId: obj.selectedSkuComb.sku_id, //skuID
           userId: this.userId,  //用户id
           procuctId: this.id,    //商品id
           shoppingNumber: obj.selectedNum  //购买数量
         };
         setShopping(parm).then(data => {
-          window.console.log(data);
+          if(data.code === 0){
+            window.console.log(this.$refs.goodsSku.getSkuData());
+            let list = []
+            obj.selectedSkuComb.price = obj.selectedSkuComb.price/100
+            obj.selectedSkuComb.num = obj.selectedNum
+            obj.selectedSkuComb.vip_price =  obj.selectedSkuComb.price
+            obj.selectedSkuComb.product_id = obj.goodsId
+            list.push(obj.selectedSkuComb)
+            window.console.log(list);
+            this.$router.push({ path: "/sureOrder", query:{list:list}});
+          }
         });
     },
     onAddCartClicked(val) {
       window.console.log(val);
       let parm = {
-          skuId: val.selectedSkuComb.id, //skuID
+          skuId: val.selectedSkuComb.sku_id, //skuID
           userId: this.userId,  //用户id
           procuctId: this.id,    //商品id
           shoppingNumber: val.selectedNum //购买数量
         };
         setShopping(parm).then(data => {
-          window.console.log(data);
+          Toast(data.msg);
         });
     }
   }

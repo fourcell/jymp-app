@@ -4,7 +4,7 @@
     v-for="(item,index) in list"
     :key="index"
     :num='item.num'
-    :price="item.vip_price"
+    :price="item.price"
     :desc="item.describes"
     :title="'【'+item.p_name+'】'+item.p_title"
     :thumb="item.img"
