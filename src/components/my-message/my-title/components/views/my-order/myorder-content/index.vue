@@ -7,8 +7,8 @@
           :num="item.p_num"
           :price="item.pay_total"
           :desc="item.adderss"
-          title="完美日记天赋干皮粉底液深水弹女保湿持久干皮"
-          thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
+          :title="'【'+ item.p_name +'】' + item.p_title"
+          :thumb="item.img"
         >
           <template #footer>
             <van-button size="mini" round plain color="rgb(254, 64, 112)">卖了换钱</van-button>

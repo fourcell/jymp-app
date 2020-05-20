@@ -18,7 +18,7 @@
         <div class="card-conent">
           <p class="card-conent__titlel" v-text="'【'+item.p_name+'】'+item.p_title"></p>
           <p class="card-conent__sub" v-show="item.updateShow">
-            <span>{{item.describes}}</span>
+            <span>{{item.color + '，' + item.name}}</span>
             <span v-text="'x'+item.num"></span>
           </p>
           <p class="card-conent__stepper" v-show="!item.updateShow">

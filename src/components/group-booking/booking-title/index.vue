@@ -12,6 +12,8 @@
 <script>
 import Card from "../viwes/card";
 import Title from "../../shopping-trolley/shopping-title/index";
+import { appSelect } from "../../../api/serve/home/index";
+
 export default {
   components: {
     Card,
@@ -566,12 +568,18 @@ export default {
       }
     };
   },
-  created () {
-    this.gridList = this.goods[0]
+  async created () {
+    let type = this.activeKey + 6
+    let res = await appSelect(type);
+    this.gridList = res.payload
+    console.log(res.payload);
   },
   methods: {
-    onChange(index){
-      this.gridList = this.goods[index]
+    async onChange(index){
+      let type = (index + 6)
+      let res = await appSelect(type);
+      this.gridList = res.payload
+      console.log(res);
     }
   },
 };
