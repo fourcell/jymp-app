@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@alicloud/pop-core": "^1.7.9",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "node-sass": "^4.13.1",
     "postcss-pxtorem": "^5.1.1",
